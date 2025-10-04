@@ -411,3 +411,72 @@ section:last-of-type {
         blink 0.5s step-end 5,
         hide-cursor 0.1s 2.5s forwards;
 }
+/* ===== Tambahan: Style untuk Navbar Responsif ===== */
+
+.burger {
+    display: none; /* Awalnya disembunyikan di layar besar */
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--light-gray);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Media Query: Style untuk layar di bawah 768px */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        height: 100vh;
+        background: var(--dark-space);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 60%;
+        transform: translateX(100%); /* Sembunyikan ke kanan */
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        opacity: 0; /* Sembunyikan link saat menu tertutup */
+    }
+    
+    .burger {
+        display: block; /* Tampilkan ikon burger */
+        z-index: 1001; /* Pastikan di atas elemen lain */
+    }
+}
+
+/* Kelas ini akan ditambahkan oleh JS saat burger diklik */
+.nav-active {
+    transform: translateX(0%); /* Tampilkan menu */
+}
+
+/* Animasi untuk link saat menu aktif */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* Animasi untuk ikon burger menjadi 'X' */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
