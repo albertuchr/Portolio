@@ -251,15 +251,19 @@ section:last-of-type {
 
 /* ===== Bagian Sertifikasi (Carousel) ===== */
 .certifications-section {
+    position: relative;
     padding-bottom: 150px;
 }
+
 .certification-carousel {
     padding: 40px 0;
 }
+
 .cert-item {
     padding: 0 15px;
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
 .cert-item img {
     width: 100%;
     border-radius: 10px;
@@ -281,6 +285,7 @@ section:last-of-type {
     height: 50px;
     z-index: 1;
 }
+
 .slick-prev:before, .slick-next:before {
     font-size: 50px;
     color: var(--primary-color);
@@ -477,6 +482,39 @@ section:last-of-type {
     .timeline-item:nth-child(odd) .timeline-content::after,
     .timeline-item:nth-child(even) .timeline-content::after {
         display: none;
+    }
+    
+    /* ===== Penyesuaian untuk Carousel Sertifikasi ===== */
+    .certifications-section .slick-prev,
+    .certifications-section .slick-next {
+        top: auto;
+        bottom: 60px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .certifications-section .slick-prev {
+        left: calc(50% - 55px);
+    }
+
+    .certifications-section .slick-next {
+        right: calc(50% - 55px);
+    }
+
+    .certifications-section .slick-prev:before,
+    .certifications-section .slick-next:before {
+        font-size: 24px;
+        color: var(--dark-brown);
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        padding: 12px;
+        opacity: 1;
+    }
+    
+    .certifications-section .slick-slide,
+    .certifications-section .slick-center {
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
