@@ -62,7 +62,7 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 40px; /* Beri jarak lebih antar link */
+    gap: 40px;
 }
 
 .nav-links a {
@@ -240,7 +240,7 @@ section:last-of-type {
 /* ===== Bagian Sertifikasi (Carousel) ===== */
 .certifications-section {
     position: relative;
-    padding-bottom: 150px;
+    padding-bottom: 150px; /* Tambahkan ruang ekstra di bawah untuk tombol */
 }
 
 .certification-carousel {
@@ -271,7 +271,7 @@ section:last-of-type {
 .slick-prev, .slick-next {
     position: absolute;
     top: auto;
-    bottom: -80px;
+    bottom: -150px; /* Posisi lebih jauh ke bawah */
     width: 55px;
     height: 55px;
     z-index: 1;
@@ -421,7 +421,7 @@ section:last-of-type {
         right: 0px;
         top: 0px;
         height: 100vh;
-        background: var(--dark-space);
+        background: var(--dark-brown); /* Menggunakan dark-brown untuk background burger menu */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -437,7 +437,6 @@ section:last-of-type {
     .burger {
         display: block;
         z-index: 1001;
-        /* Posisikan burger di kanan atas */
         position: fixed;
         top: 20px;
         right: 8%;
@@ -465,7 +464,7 @@ section:last-of-type {
 
     .certifications-section .slick-prev,
     .certifications-section .slick-next {
-        bottom: 60px;
+        bottom: -100px; /* Posisi lebih jauh ke bawah */
     }
 
     .certifications-section .slick-prev:before,
