@@ -1,4 +1,4 @@
-/* ===== Pengaturan Dasar & Palet Warna (Revisi Black-Brown) ===== */
+/* ===== Pengaturan Dasar & Palet Warna ===== */
 :root {
     --black: #000000;
     --dark-brown: #281E16;
@@ -101,8 +101,8 @@ body {
 }
 
 .hero-profile-img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--accent-brown);
@@ -177,7 +177,7 @@ section:last-of-type {
     color: var(--text-color);
 }
 
-/* ===== Bagian Skills (Efek Kaca) ===== */
+/* ===== Bagian Skills ===== */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
 .skill-item { 
     background-color: var(--card-bg); 
@@ -192,7 +192,7 @@ section:last-of-type {
 .skill-icon { font-size: 3rem; margin-bottom: 20px; }
 .skill-item h3 { font-family: var(--font-serif); color: var(--light-gray); font-size: 1.5rem; margin-bottom: 15px; }
 
-/* ===== Bagian Experience (Efek Kaca) ===== */
+/* ===== Bagian Experience ===== */
 .timeline { position: relative; }
 .timeline::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background-color: #333; transform: translateX(-50%);}
 .timeline-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; width: 100%; }
@@ -212,7 +212,7 @@ section:last-of-type {
 .date { display: block; font-size: 0.9rem; color: #aaa; margin: 10px 0; }
 .timeline-image img { width: 100%; border-radius: 8px; }
 
-/* ===== Bagian Proyek (Efek Kaca) ===== */
+/* ===== Bagian Proyek ===== */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
 .project-flip-card { background-color: transparent; height: 250px; perspective: 1000px; }
 .project-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
@@ -237,7 +237,7 @@ section:last-of-type {
 .project-card-back h4 { font-family: var(--font-serif); font-size: 1.6rem; color: var(--light-gray); margin-bottom: 10px; }
 .project-link { color: var(--primary-color); text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; }
 
-/* ===== Bagian Sertifikasi (Carousel) - SUDAH DIPERBAIKI ===== */
+/* ===== Bagian Sertifikasi (Carousel) ===== */
 .certifications-section {
     position: relative;
     padding-bottom: 200px;
@@ -248,14 +248,23 @@ section:last-of-type {
 }
 
 .cert-item {
-    padding: 0 15px;
+    margin: 0 15px;
     transition: transform 0.5s ease, opacity 0.5s ease;
+    height: 300px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cert-item img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .slick-slide {
@@ -311,7 +320,7 @@ section:last-of-type {
     display: none !important;
 }
 
-/* ===== Bagian Kontak (Revisi Total) ===== */
+/* ===== Bagian Kontak ===== */
 .contact-section { 
     text-align: center;
 }
@@ -349,7 +358,7 @@ section:last-of-type {
     transform: translateY(-5px);
 }
 
-/* ===== Tambahan: Animasi Baru (Hero & Typing) ===== */
+/* ===== Animasi Baru (Hero & Typing) ===== */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -407,7 +416,7 @@ section:last-of-type {
     animation: blink 0.5s step-end 5, hide-cursor 0.1s 2.5s forwards;
 }
 
-/* ===== Tambahan: Style untuk Navbar & Experience Responsif ===== */
+/* ===== Style Responsif ===== */
 .burger {
     display: none;
     cursor: pointer;
@@ -422,6 +431,10 @@ section:last-of-type {
 }
 
 @media screen and (max-width: 768px) {
+    .navbar {
+        justify-content: flex-end;
+    }
+
     .nav-links {
         position: fixed;
         right: 0px;
@@ -436,6 +449,7 @@ section:last-of-type {
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
         z-index: 1000;
+        gap: 0;
     }
 
     .nav-links li { opacity: 0; }
@@ -444,7 +458,7 @@ section:last-of-type {
         display: block;
         z-index: 1001;
         position: fixed;
-        top: 20px;
+        top: 28px;
         right: 8%;
     }
     
