@@ -1,16 +1,12 @@
 /* ===== Pengaturan Dasar & Palet Warna (Revisi Black-Brown) ===== */
 :root {
-    /* Palet warna baru dengan main color hitam & coklat */
     --black: #000000;
     --dark-brown: #281E16;
     --accent-brown: #A07A5F; 
     --light-gray: #D3DAD9;
-
-    /* Implementasi ke variabel tema */
     --text-color: var(--light-gray);
     --primary-color: var(--accent-brown);
-    --card-bg: rgba(40, 30, 22, 0.35); /* Warna dark-brown dengan transparansi */
-    
+    --card-bg: rgba(40, 30, 22, 0.35);
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Poppins', sans-serif;
 }
@@ -26,7 +22,6 @@ html {
 }
 
 body {
-    /* Gradient baru dengan main color hitam */
     background: linear-gradient(to right top, var(--black), var(--dark-brown));
     color: var(--text-color);
     font-family: var(--font-sans);
@@ -52,29 +47,22 @@ body {
     width: 100%;
     padding: 20px 8%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     z-index: 1000;
     background-color: transparent;
     transition: background-color 0.4s ease, top 0.4s ease;
 }
 .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.5); /* Warna hitam dengan transparansi */
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
 }
 .navbar.hidden { top: -100px; }
 
-.nav-brand {
-    font-family: var(--font-serif);
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--light-gray);
-}
-
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 40px; /* Beri jarak lebih antar link */
 }
 
 .nav-links a {
@@ -281,15 +269,36 @@ section:last-of-type {
 }
 
 .slick-prev, .slick-next {
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    top: auto;
+    bottom: -80px;
+    width: 55px;
+    height: 55px;
     z-index: 1;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+.slick-prev:hover, .slick-next:hover {
+    transform: scale(1.1);
+}
+
+.slick-prev {
+    left: calc(50% - 65px);
+}
+
+.slick-next {
+    right: calc(50% - 65px);
 }
 
 .slick-prev:before, .slick-next:before {
-    font-size: 50px;
-    color: var(--primary-color);
-    opacity: 0.75;
+    font-family: 'slick';
+    font-size: 25px;
+    color: var(--dark-brown);
+    opacity: 1;
 }
 
 .slick-dots {
@@ -336,25 +345,13 @@ section:last-of-type {
 
 /* ===== Tambahan: Animasi Baru (Hero & Typing) ===== */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .animate-hero {
@@ -364,18 +361,9 @@ section:last-of-type {
     animation-timing-function: ease-out;
     animation-delay: var(--delay, 0s);
 }
+.hero-profile-img.animate-hero { animation-name: scaleIn; }
+.hero-title.animate-hero, .hero-subtitle.animate-hero { animation-name: fadeInUp; }
 
-.hero-profile-img.animate-hero {
-    animation-name: scaleIn;
-}
-
-.hero-title.animate-hero,
-.hero-subtitle.animate-hero {
-    animation-name: fadeInUp;
-}
-
-
-/* 2. Animasi untuk Efek Ketik (Typing) */
 .typing-reveal {
     position: relative;
     width: max-content;
@@ -410,9 +398,7 @@ section:last-of-type {
     right: -10px;
     top: 0;
     color: var(--primary-color);
-    animation: 
-        blink 0.5s step-end 5,
-        hide-cursor 0.1s 2.5s forwards;
+    animation: blink 0.5s step-end 5, hide-cursor 0.1s 2.5s forwards;
 }
 
 /* ===== Tambahan: Style untuk Navbar & Experience Responsif ===== */
@@ -446,75 +432,46 @@ section:last-of-type {
         z-index: 1000;
     }
 
-    .nav-links li {
-        opacity: 0;
-    }
+    .nav-links li { opacity: 0; }
     
     .burger {
         display: block;
         z-index: 1001;
+        /* Posisikan burger di kanan atas */
+        position: fixed;
+        top: 20px;
+        right: 8%;
     }
     
-    /* ===== Penyesuaian untuk Experience Timeline ===== */
-    .timeline::before {
-        left: 10px;
-    }
-
+    .timeline::before { left: 10px; }
     .timeline-item, .timeline-item:nth-child(even) {
         flex-direction: column;
         align-items: flex-start;
         padding-left: 40px;
     }
-    
-    .timeline-content, .timeline-image {
-        width: 100%;
-    }
-    
-    .timeline-image {
-        order: 1; 
-        margin-bottom: 20px;
-    }
-    
-    .timeline-content {
-        order: 2;
-    }
-    
+    .timeline-content, .timeline-image { width: 100%; }
+    .timeline-image { order: 1; margin-bottom: 20px; }
+    .timeline-content { order: 2; }
     .timeline-item:nth-child(odd) .timeline-content::after,
     .timeline-item:nth-child(even) .timeline-content::after {
         display: none;
-    }
-    
-    /* ===== Penyesuaian untuk Carousel Sertifikasi ===== */
-    .certifications-section .slick-prev,
-    .certifications-section .slick-next {
-        top: auto;
-        bottom: 60px;
-        width: 50px;
-        height: 50px;
-    }
-
-    .certifications-section .slick-prev {
-        left: calc(50% - 55px);
-    }
-
-    .certifications-section .slick-next {
-        right: calc(50% - 55px);
-    }
-
-    .certifications-section .slick-prev:before,
-    .certifications-section .slick-next:before {
-        font-size: 24px;
-        color: var(--dark-brown);
-        background-color: var(--primary-color);
-        border-radius: 50%;
-        padding: 12px;
-        opacity: 1;
     }
     
     .certifications-section .slick-slide,
     .certifications-section .slick-center {
         transform: scale(1);
         opacity: 1;
+    }
+
+    .certifications-section .slick-prev,
+    .certifications-section .slick-next {
+        bottom: 60px;
+    }
+
+    .certifications-section .slick-prev:before,
+    .certifications-section .slick-next:before {
+        font-size: 24px;
+        padding: 12px;
     }
 }
 
@@ -523,22 +480,10 @@ section:last-of-type {
 }
 
 @keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0px); }
 }
 
-.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-.toggle .line2 {
-    opacity: 0;
-}
-.toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
+.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+.toggle .line2 { opacity: 0; }
+.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
