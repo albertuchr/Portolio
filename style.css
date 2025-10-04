@@ -392,10 +392,8 @@ section:last-of-type {
 }
 
 .typing-reveal.animated {
-    /* Mencegah animasi slide-up bawaan saat mengetik */
     opacity: 1 !important;
     transform: translateY(0) !important;
-    
     overflow: hidden;
     white-space: nowrap;
     animation: typing 2.5s steps(30, end) forwards;
@@ -411,10 +409,10 @@ section:last-of-type {
         blink 0.5s step-end 5,
         hide-cursor 0.1s 2.5s forwards;
 }
-/* ===== Tambahan: Style untuk Navbar Responsif ===== */
 
+/* ===== Tambahan: Style untuk Navbar & Experience Responsif ===== */
 .burger {
-    display: none; /* Awalnya disembunyikan di layar besar */
+    display: none;
     cursor: pointer;
 }
 
@@ -426,7 +424,6 @@ section:last-of-type {
     transition: all 0.3s ease;
 }
 
-/* Media Query: Style untuk layar di bawah 768px */
 @media screen and (max-width: 768px) {
     .nav-links {
         position: fixed;
@@ -439,26 +436,54 @@ section:last-of-type {
         align-items: center;
         justify-content: space-around;
         width: 60%;
-        transform: translateX(100%); /* Sembunyikan ke kanan */
+        transform: translateX(100%);
         transition: transform 0.5s ease-in;
+        z-index: 1000;
     }
 
     .nav-links li {
-        opacity: 0; /* Sembunyikan link saat menu tertutup */
+        opacity: 0;
     }
     
     .burger {
-        display: block; /* Tampilkan ikon burger */
-        z-index: 1001; /* Pastikan di atas elemen lain */
+        display: block;
+        z-index: 1001;
+    }
+    
+    /* ===== Penyesuaian untuk Experience Timeline ===== */
+    .timeline::before {
+        left: 10px;
+    }
+
+    .timeline-item, .timeline-item:nth-child(even) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 40px;
+    }
+    
+    .timeline-content, .timeline-image {
+        width: 100%;
+    }
+    
+    .timeline-image {
+        order: 1; 
+        margin-bottom: 20px;
+    }
+    
+    .timeline-content {
+        order: 2;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::after,
+    .timeline-item:nth-child(even) .timeline-content::after {
+        display: none;
     }
 }
 
-/* Kelas ini akan ditambahkan oleh JS saat burger diklik */
 .nav-active {
-    transform: translateX(0%); /* Tampilkan menu */
+    transform: translateX(0%);
 }
 
-/* Animasi untuk link saat menu aktif */
 @keyframes navLinkFade {
     from {
         opacity: 0;
@@ -470,7 +495,6 @@ section:last-of-type {
     }
 }
 
-/* Animasi untuk ikon burger menjadi 'X' */
 .toggle .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
